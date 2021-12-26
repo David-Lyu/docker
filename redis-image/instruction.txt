@@ -1,0 +1,67 @@
+command line: docker build -t [docker id/project name:version] .
+  - if it is created by me or someone else
+  - the one words build are commonly used ones
+
+command line: docker run [docker id/project]
+  - do not need the version number
+  - technically the version is the tag and the rest is the project name/repo
+
+# Use an existing docker image as a base
+FROM alpine
+  - base image come with default set of programs on what to accomplish
+  - alpine: has default programs that have for installing and running redis
+
+# download and install a dependency
+RUN apk add --update redis
+  - apk is a package manager from apache that is default installed from alpine
+  - creates a temp container from the alpine image (gets stopped/deleted later)
+    - does the installing
+  - creates a new temp image with just the changes with redis already installed
+
+# tell the image what to do when it starts as a container
+CMD ["redis-server"]
+  - creates a new temp image again and CMD is telling that if it is running
+    redis-server is suppose to be running primary command
+  - remove the intermediate container and create a new snapshot of its fs and
+    a start up command store it as an image
+    -fs = file system ex: bin dev etc home ... in linux env
+
+# docker image = Instruction + argument
+ex: FROM alpine: "FROM" is the instruction; "alpine" is the argument.
+
+#download a new dependecy - to show caching containers
+RUN apk add --update gcc
+  - since adding this instruction into the dockerfile, there is no fetching
+    Alpine image or the other previous instructions
+    - caches the images
+  - if the instruction order changed it will no longer cached for the specific
+    changed instruction
+
+##manual image generation
+We can create all the steps above manually
+
+******WINDOWS USERS******
+In the upcoming lecture, we will be running a command to create a new image using docker commit with this command:
+
+docker commit -c 'CMD ["redis-server"]' CONTAINERID
+
+If you are a Windows user you may get an error like "/bin/sh: [redis-server]: not found" or "No Such Container"
+
+Instead, try running the command like this:
+
+docker commit -c "CMD 'redis-server'" CONTAINERID
+**************************
+code:
+
+```
+docker run -it alpine sh
+apk add --update redis
+```
+
+In new terminal
+
+```docker ps ``` -> get id container
+```docker commit -c 'CMD["redis-server]' [containerId]```
+
+when using hashes can use a segment of the start like git too
+```docker run [first few hashes]```
