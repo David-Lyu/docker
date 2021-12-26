@@ -1,0 +1,11 @@
+code
+```docker run -p 8081 : 8080 <image id>```
+
+- 8081 routes incoming request to localhost
+- 8080 is the port to go to in the container
+
+```docker run -it dlyu/simpleweb sh```
+- lets you open up the shell for the container
+- it lets you do standard in for the sh
+
+in docker file COPY doesn't apply the change just yet
