@@ -1,0 +1,12 @@
+docker-compose
+
+commands:
+ docker-compose up
+ docker-compose up --build (rebuilds image)
+ docker-compose up -d
+  - this is get us back to our shell and not get stuck with the docker-cli
+ docker-compose down
+  - closes all the docker containers
+
+ docker-compose ps
+  - shows the two containers from the yml file of the directory the cli is on
