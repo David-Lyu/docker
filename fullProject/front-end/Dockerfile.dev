@@ -1,0 +1,17 @@
+## need to use cmd docker build -f Dockerfile.dev
+    ## the -f is to specify what file to use
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+## this straight up takes a snapshot so no update if local changes
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm","run", "start"]
+
+## docker run -it -p 3000:3000 IMAGE_ID
+## winpty docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app 490e4b28896c
