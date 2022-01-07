@@ -1,0 +1,5 @@
+sudo: required
+servicesL: docker
+
+before_install:
+  - docker build -t dlyu/front-end -f Dockerfile.dev .
