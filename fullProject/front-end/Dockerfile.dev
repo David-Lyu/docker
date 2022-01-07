@@ -9,9 +9,16 @@ COPY package.json .
 
 RUN npm install
 
+## could get away with leaving this out since we copying files with local
+## also doesn't hurt to have since will be needed in production
 COPY . .
 
 CMD ["npm","run", "start"]
 
+
+## dont for get -t on build creates a tag
 ## docker run -it -p 3000:3000 IMAGE_ID
-## winpty docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app 490e4b28896c
+## open up the docker app (since running with WSL). Windows has a special area for docker.
+    ## explorer.exe . opens the file explorer of where the special area is at.
+    ## run repo here
+    ## docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app <container id>
