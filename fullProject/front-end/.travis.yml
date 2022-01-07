@@ -1,8 +1,0 @@
-sudo: required
-servicesL: docker
-
-before_install:
-  - docker build -t dlyu/front-end -f Dockerfile.dev .
-  
-script:
-  - docker run -e CI=true USERNAME/docker-react npm run test
