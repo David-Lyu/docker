@@ -13,7 +13,7 @@ deploy:
   app: 'udemy-docker'
   env: 'Udemydocker-env'
   bucket_name: 'elasticbeanstalk-us-east-2-106810214139'
-  bucket_path: 'docker'
+  bucket_path: 'udemy-docker'
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
