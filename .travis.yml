@@ -2,7 +2,7 @@ sudo: required
 services: docker
 
 before_install:
-  - docker build -t dlyu/front-end -f ./fullProject/front-end/Dockerfile.dev ./fullProject/front-end/
+  - docker build -t dlyu/front-end -f ./TRAVIS-AWS_1/front-end/Dockerfile.dev ./fullProject/front-end/
 
 script:
   - docker run -e CI=true dlyu/front-end npm run test

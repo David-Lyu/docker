@@ -1,6 +1,6 @@
 FROM node:16-alpine as builder
 
-WORKDIR '/app/fullProject/front-end'
+WORKDIR '/app/TRAVIS-AWS_1/front-end'
 
 COPY package.json .
 
