@@ -1,5 +1,5 @@
 FROM node:16-alpine as builder
-WORKDIR '/app'
+WORKDIR '/app/fullProject/front-end'
 COPY package.json .
 RUN npm install
 COPY . .
@@ -8,4 +8,4 @@ RUN npm run build
 FROM nginx
 ## expose is for aws elasticbeanstalk
 EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/fullProject/front-end/build /usr/share/nginx/html
