@@ -1,34 +1,8 @@
 version: '3'
-
-## make sure services is plural
 services:
-  ## can be called what ever?
   web:
-    ## becuase we have .dev we need to change "." to the following below
     build:
-      # what repo to work in. If this was nested we could put the file path there
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - '3000:3000'
-    volumes:
-      - /app/node_modules
-      - .:/app
-
-  # the downside is of this method is cannot be in the container's shell
-  # cannot attach to container
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: ['npm', 'run', 'test']
-
-  ## reason for above comment:
-  # so two scripts gets ran when using the compose above. And when we do attach
-  # it only attaches to the primary one which is the npm run start
-## second way to do it <- can manipulate test suite though
-# run docker-compose
-# run docker exec -it <container id> npm run test
+      - '80:80'
