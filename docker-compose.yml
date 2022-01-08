@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build:
-      context: .
+      context: ./fullProject/front-end
       dockerfile: Dockerfile
     ports:
       - '80:80'
