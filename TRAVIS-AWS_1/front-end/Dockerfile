@@ -13,4 +13,4 @@ RUN npm run build
 FROM nginx
 ## expose is for aws elasticbeanstalk
 EXPOSE 80
-COPY --from=builder /app/fullProject/front-end/build /usr/share/nginx/html
+COPY --from=builder /app/TRAVIS-AWS_1/front-end/build /usr/share/nginx/html
