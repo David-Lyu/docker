@@ -1,9 +1,13 @@
 FROM node:16-alpine as builder
+
 WORKDIR '/app/fullProject/front-end'
-RUN ls
-COPY package.json .
+
+COPY package.json /app/fullProject/front-end
+
 RUN npm install
+
 COPY . .
+
 RUN npm run build
 
 FROM nginx
