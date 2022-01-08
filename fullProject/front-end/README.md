@@ -1,42 +1,24 @@
 # Docker Project
 
-## To get started...
+## To get started... Locally
 
 Run:
 
-- docker build .
-- docker run .
+- docker -f Dockerfile.dev or docker-compose -f docker-compose-dev
+- 
+  - Look into the Docker file to work for additional notes
 
   - to get it to work for windows you have to either with WSL clone this repo into the repo where WSL is located
   - else should download bash or something and run the commands above
 
-## Getting Started with Create React App
+## Connect with Travis
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Go to:
+- ../../travis.yml
+  - edit page
 
-## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Connect to AWS
+- enter env variables to Travis online
+Go to ../../
+- in this directore there is a docker-compose file that travis will run that points to ./Dockerfile
