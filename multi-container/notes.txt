@@ -1,0 +1,5 @@
+for Environment Variables there are two ways
+  1) is take from project
+    - variableName=value
+  2) takes from computer env
+    - variableName

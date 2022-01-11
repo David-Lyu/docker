@@ -1,20 +1,45 @@
+## this is for TRAVIS-AWS and travis
+# sudo: required
+# services: docker
+
+# before_install:
+#   - docker build -t dlyu/front-end -f ./TRAVIS-AWS_1/front-end/Dockerfile.dev ./fullProject/front-end/
+
+# script:
+#   - docker run -e CI=true dlyu/front-end npm run test
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: 'us-east-2'
+#   app: 'udemy-docker'
+#   env: 'Udemydocker-env'
+#   bucket_name: 'elasticbeanstalk-us-east-2-106810214139'
+#   bucket_path: 'udemy-docker'
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: '$AWS_SECRET_KEY'
+
+## this is for multi-container
 sudo: required
-services: docker
+services:
+  - docker
 
 before_install:
-  - docker build -t dlyu/front-end -f ./TRAVIS-AWS_1/front-end/Dockerfile.dev ./fullProject/front-end/
+  - docker build -t dlyu/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true dlyu/front-end npm run test
+  - docker run -e CI=true dlyu/react-test npm test
 
-deploy:
-  provider: elasticbeanstalk
-  region: 'us-east-2'
-  app: 'udemy-docker'
-  env: 'Udemydocker-env'
-  bucket_name: 'elasticbeanstalk-us-east-2-106810214139'
-  bucket_path: 'udemy-docker'
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: '$AWS_SECRET_KEY'
+after_success:
+  - docker build -t dlyu/multi-client ./client
+  - docker build -t dlyu/multi-nginx ./nginx
+  - docker build -t dlyu/multi-server ./server
+  - docker build -t dlyu/multi-worker ./worker
+  # take images and push to docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # take those images and push them to docker hub
+  - docker push dlyu/multi-client
+  - docker push dlyu/multi-server
+  - docker push dlyu/multi-nginx
+  - docker push dlyu/multi-worker
