@@ -1,3 +1,4 @@
+## have to delete and move Dockerrun.aws.json to this directory
 version: '3'
 services:
   web:

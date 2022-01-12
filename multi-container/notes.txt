@@ -3,3 +3,10 @@ for Environment Variables there are two ways
     - variableName=value
   2) takes from computer env
     - variableName
+
+Dockerrun.aws.json
+ - in march 2022 or april will be discontinued
+ - in "containerDefinitions" the "essential" property
+   will turn off any other container definition elements too because it
+   is essential
+ - this has to be in the root directory so one up looking ../docker-compose.yml file for similar notes
