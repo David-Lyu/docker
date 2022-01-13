@@ -1,0 +1,21 @@
+Kubernetes: System for running many different containers
+  over multiple different machines
+  - Run different containers with different images
+  - want to use when we have an application that uses many different types
+      of containers running at different quantities
+  - so the multi-container method can work just depends on the project created
+
+
+minikube:
+  - cmd tool to set up a tiny kubernetes cluster in local machines
+  - not used in production
+
+managedSolution:
+  - called something different per cloud
+  - this is what is used in production
+
+kubectl:
+  - anytime we need to tell kubernetes what kind of Node(VM) and its containers
+    it should be running
+  - use this in production too
+  - different than minikube
